@@ -11,11 +11,10 @@
 
 namespace Symfony\Component\DependencyInjection\Compiler;
 
-use Symfony\Component\DependencyInjection\Argument\AbstractArgument;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
+use Symfony\Component\DependencyInjection\LazyProxy\ProxyHelper;
 use Symfony\Component\DependencyInjection\Reference;
-use Symfony\Component\VarExporter\ProxyHelper;
 
 /**
  * Resolves named arguments to their corresponding numeric index.
@@ -24,12 +23,11 @@ use Symfony\Component\VarExporter\ProxyHelper;
  */
 class ResolveNamedArgumentsPass extends AbstractRecursivePass
 {
-    protected function processValue(mixed $value, bool $isRoot = false): mixed
+    /**
+     * {@inheritdoc}
+     */
+    protected function processValue($value, $isRoot = false)
     {
-        if ($value instanceof AbstractArgument && $value->getText().'.' === $value->getTextWithContext()) {
-            $value->setContext(sprintf('A value found in service "%s"', $this->currentId));
-        }
-
         if (!$value instanceof Definition) {
             return parent::processValue($value, $isRoot);
         }
@@ -43,10 +41,6 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
             $resolvedArguments = [];
 
             foreach ($arguments as $key => $argument) {
-                if ($argument instanceof AbstractArgument && $argument->getText().'.' === $argument->getTextWithContext()) {
-                    $argument->setContext(sprintf('Argument '.(\is_int($key) ? 1 + $key : '"%3$s"').' of '.('__construct' === $method ? 'service "%s"' : 'method call "%s::%s()"'), $this->currentId, $method, $key));
-                }
-
                 if (\is_int($key)) {
                     $resolvedArguments[$key] = $argument;
                     continue;
@@ -82,12 +76,12 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
                 }
 
                 if (null !== $argument && !$argument instanceof Reference && !$argument instanceof Definition) {
-                    throw new InvalidArgumentException(sprintf('Invalid service "%s": the value of argument "%s" of method "%s()" must be null, an instance of "%s" or an instance of "%s", "%s" given.', $this->currentId, $key, $class !== $this->currentId ? $class.'::'.$method : $method, Reference::class, Definition::class, get_debug_type($argument)));
+                    throw new InvalidArgumentException(sprintf('Invalid service "%s": the value of argument "%s" of method "%s()" must be null, an instance of "%s" or an instance of "%s", "%s" given.', $this->currentId, $key, $class !== $this->currentId ? $class.'::'.$method : $method, Reference::class, Definition::class, \gettype($argument)));
                 }
 
                 $typeFound = false;
                 foreach ($parameters as $j => $p) {
-                    if (!\array_key_exists($j, $resolvedArguments) && ProxyHelper::exportType($p, true) === $key) {
+                    if (!\array_key_exists($j, $resolvedArguments) && ProxyHelper::getTypeHint($r, $p, true) === $key) {
                         $resolvedArguments[$j] = $argument;
                         $typeFound = true;
                     }
@@ -111,12 +105,6 @@ class ResolveNamedArgumentsPass extends AbstractRecursivePass
         }
         if ($calls !== $value->getMethodCalls()) {
             $value->setMethodCalls($calls);
-        }
-
-        foreach ($value->getProperties() as $key => $argument) {
-            if ($argument instanceof AbstractArgument && $argument->getText().'.' === $argument->getTextWithContext()) {
-                $argument->setContext(sprintf('Property "%s" of service "%s"', $key, $this->currentId));
-            }
         }
 
         return parent::processValue($value, $isRoot);
