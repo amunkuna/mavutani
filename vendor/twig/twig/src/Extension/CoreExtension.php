@@ -1329,10 +1329,6 @@ function twig_constant($constant, $object = null)
         $constant = \get_class($object).'::'.$constant;
     }
 
-    if (!\defined($constant)) {
-        throw new RuntimeError(sprintf('Constant "%s" is undefined.', $constant));
-    }
-
     return \constant($constant);
 }
 

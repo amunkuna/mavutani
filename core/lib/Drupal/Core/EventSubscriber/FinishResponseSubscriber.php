@@ -127,7 +127,7 @@ class FinishResponseSubscriber implements EventSubscriberInterface {
     // Prevent browsers from sniffing a response and picking a MIME type
     // different from the declared content-type, since that can lead to
     // XSS and other vulnerabilities.
-    // https://owasp.org/www-project-secure-headers
+    // https://www.owasp.org/index.php/List_of_useful_HTTP_headers
     $response->headers->set('X-Content-Type-Options', 'nosniff', FALSE);
     $response->headers->set('X-Frame-Options', 'SAMEORIGIN', FALSE);
 

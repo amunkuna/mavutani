@@ -22,7 +22,7 @@ interface FilterInterface {
    * @return \Symfony\Component\Routing\RouteCollection
    *   A non-empty RouteCollection of matched routes
    *
-   * @throws \Symfony\Component\Routing\Exception\ResourceNotFoundException
+   * @throws ResourceNotFoundException
    *   If none of the routes in $collection matches $request. This is a
    *   performance optimization to not continue the match process when a match
    *   will no longer be possible.

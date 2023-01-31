@@ -146,7 +146,7 @@ interface ThemeHandlerInterface {
    * @return \Drupal\Core\Extension\Extension
    *   An extension object.
    *
-   * @throws \Drupal\Core\Extension\Exception\UnknownExtensionException
+   * @throws \Drupal\Core\Extension\Extension\UnknownExtensionException
    *   Thrown when the requested theme does not exist.
    */
   public function getTheme($name);
