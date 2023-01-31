@@ -1,0 +1,11 @@
+{
+  "name": "drupal/commerce_invoice",
+  "type": "drupal-module",
+  "description": "Defines the Invoice entity and associated features.",
+  "homepage": "https://drupal.org/project/commerce_invoice",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "drupal/commerce": "^2.25",
+    "drupal/entity_print": "^2.0"
+  }
+}
