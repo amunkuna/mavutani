@@ -1,0 +1,5 @@
+commerce_view_receipt:
+  route_name: commerce_view_receipt
+  base_route: entity.commerce_order.canonical
+  title: Receipt
+  weight: 50

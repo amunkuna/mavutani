@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * Implements hook_menu_local_actions_alter()
+ */
+function commerce_view_receipt_menu_local_actions_alter(&$local_actions) {
+  if (isset($local_actions['entity.commerce_order.resend_receipt_form'])) {
+    $local_actions['entity.commerce_order.resend_receipt_form']['appears_on'][] = 'commerce_view_receipt';
+  }
+}
+
