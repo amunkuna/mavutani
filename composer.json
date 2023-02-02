@@ -16,6 +16,7 @@
     ],
     "require": {
         "composer/installers": "^1.9",
+        "drupal/bootstrap": "^3.25",
         "drupal/commerce": "^2.33",
         "drupal/commerce_invoice": "^2.0@RC",
         "drupal/commerce_view_receipt": "^1.0",
