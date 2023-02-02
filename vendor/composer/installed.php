@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ad4367c75d2454c50045bcb6d6bc8bfa9adca83d',
+        'reference' => '1b1d3816d19ef3e2ad54f85d5c52d48eb2f10266',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -412,6 +412,15 @@
                 0 => '9.5.0',
             ),
         ),
+        'drupal/datetime_range_popup' => array(
+            'pretty_version' => '5.0.0',
+            'version' => '5.0.0.0',
+            'reference' => '8.x-5.0',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/datetime_range_popup',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/diff' => array(
             'pretty_version' => '1.1.0',
             'version' => '1.1.0.0',
@@ -505,7 +514,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ad4367c75d2454c50045bcb6d6bc8bfa9adca83d',
+            'reference' => '1b1d3816d19ef3e2ad54f85d5c52d48eb2f10266',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
