@@ -1,0 +1,13 @@
+name: 'Event Conferences via Group'
+description: 'Enables an event group for management from the event entity.'
+package: 'Event'
+type: 'module'
+core_version_requirement: ^8.8 || ^9
+dependencies:
+  - 'event'
+  - 'group:group'
+
+# Information added by Drupal.org packaging script on 2020-06-06
+version: '8.x-1.0-alpha2'
+project: 'event'
+datestamp: 1591424014

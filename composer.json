@@ -25,6 +25,7 @@
         "drupal/core-project-message": "^9.5",
         "drupal/core-recommended": "^9.5",
         "drupal/core-vendor-hardening": "^9.5",
+        "drupal/event": "^1.0@alpha",
         "drupal/inline_entity_form": "^1.0@RC"
     },
     "conflict": {
@@ -38,7 +39,8 @@
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
             "drupal/core-vendor-hardening": true,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "cweagans/composer-patches": true
         },
         "sort-packages": true
     },
