@@ -1,0 +1,12 @@
+name: Commerce View Receipt
+description: View commerce order receipts in browser
+core_version_requirement: ^8 || ^9
+type: module
+package: 'Commerce (contrib)'
+dependencies:
+  - commerce:commerce_order
+
+# Information added by Drupal.org packaging script on 2022-03-25
+version: '1.0.0'
+project: 'commerce_view_receipt'
+datestamp: 1648223650

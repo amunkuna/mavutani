@@ -1,0 +1,12 @@
+commerce_view_receipt:
+  path: '/admin/commerce/orders/{commerce_order}/receipt'
+  defaults:
+    _title: 'Receipt'
+    _controller: '\Drupal\commerce_view_receipt\Controller\ReceiptController::viewReceipt'
+  options:
+    parameters:
+      commerce_order:
+        type: entity:commerce_order
+  requirements:
+    _permission: 'view receipts'
+    commerce_order: \d+
